@@ -22,10 +22,7 @@ import { Message } from "./message.model";
 })
 
 export class MessageComponent {
-
-    @Input() messageVarClass: Message = new Message("","");
-    @Input('inputMessage') mesageVarClassAlias: Message = new Message("", "");
-
-
+    @Input() messageVarClasse: Message = new Message("","")
+    @Input('inputMessage') messageVarClasseAlias: Message = new Message("", "")
 
 }

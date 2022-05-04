@@ -1,5 +1,4 @@
 import { Component } from '@angular/core'; 
-import { style } from '@angular/core/src/animation/dsl';
 import { Message } from './messages/message.model';
 
 @Component({
@@ -7,6 +6,6 @@ import { Message } from './messages/message.model';
     templateUrl: './app.component.html',
 })
 export class AppComponent {
-    messageBinding: Message = new Message("Só para testar", "Arthur");
-    messageBindingAlias: Message = new Message("Alias do texto", "AliasDoUser");
+    messageBinding: Message = new Message("Arthur","Teste");
+    messageBindingAlias: Message =  new Message("AliasDoUser", "Alias do texto");
 }
