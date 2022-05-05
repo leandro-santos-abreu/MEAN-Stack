@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Message } from "./message.model";
 
 @Component({
@@ -24,5 +24,12 @@ import { Message } from "./message.model";
 export class MessageComponent {
     @Input() messageVarClasse: Message = new Message("","")
     @Input('inputMessage') messageVarClasseAlias: Message = new Message("", "")
+    @Output() editClicked_MessageMetodoClasse = new EventEmitter<string>();
+    @Output('outputMessage') editClicked_MessageMetodoClasseAlias = new EventEmitter<string>();
 
+    onEdit(){
+        //alert('Táh Funcionando...')
+        this.editClicked_MessageMetodoClasse.emit('Texto veio de message (child) para o app (pai)');
+        this.editClicked_MessageMetodoClasseAlias.emit('Texto veio de message (child) para o app (pai) - Alias');
+    }
 }
