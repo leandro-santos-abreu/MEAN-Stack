@@ -1,6 +1,7 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body{
+  background-image: url("/images/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 a {
@@ -26,5 +27,29 @@ input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
 
+.center {
+  margin: auto;
+  width: 55%;
+  border: 3px solid #73AD21;
+  margin-top: 10%;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
 
+.mainTitle{
+  text-align: center;
+}
+
+.btn_success{
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+}
+
+.button{
+  margin-left: 10px;
+}
  
