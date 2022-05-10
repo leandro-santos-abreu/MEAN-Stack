@@ -36,4 +36,8 @@ export class MessageListComponent implements OnInit{
             dadosErro => console.log(dadosErro)
         );
     }
+
+    onDelete(message: Message){
+        this.messageService.deleteMessage(message);
+    }
 }

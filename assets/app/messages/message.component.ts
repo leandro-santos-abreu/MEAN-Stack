@@ -30,6 +30,10 @@ export class MessageComponent {
 
     constructor(private messageServiceObj: MessageService){}
 
+    // onDelete(messageId:string){
+    //     this.messageServiceObj.deleteMessage(messageId);
+    // }
+
     onDelete(){
         this.messageServiceObj.deleteMessage(this.messageVarClasse);
     }

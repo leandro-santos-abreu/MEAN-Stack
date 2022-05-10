@@ -40,6 +40,9 @@ export class MessageService {
     }
 
     deleteMessage(message: Message){
-        this.messageSService.splice(this.messageSService.indexOf(message), 1);
+        this.http.delete("http://localhost:3000/deletar/mensagens/"+message.userId)
+        .subscribe(() => {
+            console.log("Mensagem Deletada.")
+        });
     }
 }
