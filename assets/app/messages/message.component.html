@@ -1,4 +1,4 @@
-        <article class="panel panel-default">
+        <article class="panel panel-default" [ngStyle]="{backgroundColor: 'yellow'}">
           <div class="panel-body">
               {{ messageVarClasse.content }}
               {{ messageVarClasseAlias.content }}
@@ -9,8 +9,8 @@
               {{ messageVarClasseAlias.username }}
             </div>
             <div class="config">
-              <a href="#" (click) = "onEdit()">Edit</a>
-              <a href="#">Delete</a>
+              <a (click)="onEdit()">Edit</a>
+              <a (click)="onDelete()">Delete</a>
             </div>
           </footer>
         </article>
