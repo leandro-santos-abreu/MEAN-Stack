@@ -1,0 +1,22 @@
+<h1>SIGN UP</h1>
+<div class="col-md-8 col-md-offset-2">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="firstName">Nome:</label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstNameTS">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Sobrenome:</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastNameTS">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" id="email" formControlName="emailTS">
+        </div>
+        <div class="form-group">
+            <label for="password">Senha:</label>
+            <input type="text" class="form-control" id="password" formControlName="passwordTS">
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!myForm.valid">Cadastrar</button>
+    </form>
+</div>
