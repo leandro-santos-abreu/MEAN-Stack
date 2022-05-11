@@ -45,14 +45,29 @@ export class MessageService {
     updateMessage(messageId: string, content: string, username: string){
         const message: Message = {content: content, username:username};
         this.http.put("http://localhost:3000/editar/mensagens/"+messageId,message)
-        .subscribe(response => console.log(response));
+        .subscribe(dadosSucesso => {
+            alert('Mensagem Atualizada com sucesso, ao retornar para a tela mensagens o novo conteúdo será exibido.');
+            console.log(dadosSucesso);
+
+        },
+        dadosErro => {
+            alert('Ocorreu um problema, tente novamente!');
+            console.log(dadosErro);
+        }
+        );
         
     }
 
     deleteMessage(message: Message){
         this.http.delete("http://localhost:3000/deletar/mensagens/"+message.messageId)
-        .subscribe(() => {
-            console.log("Mensagem Deletada.")
-        });
+        .subscribe(dadosSucesso => {
+            alert('Mensagem Deletada com sucesso, atualize a pagina para ver o resultado.');
+            console.log(dadosSucesso);
+        },
+        dadosErro => {
+            alert("Ops! Algo deu errado! Tente novamente.")
+            console.log(dadosErro);
+        }
+        );
     }
 }
