@@ -47,9 +47,7 @@ export class MessageService {
         const message: Message = {content: content, username:username};
         this.http.put("http://localhost:3000/editar/mensagens/"+messageId,message)
         .subscribe(response => console.log(response));
-
-
-        // VERIFICAR O PQ ESTÁ ALEGANDO QUE ESTAMOS EDITANDO O ID, SEM PASSAR ELE NA MENSAGEM
+        
     }
 
     deleteMessage(message: Message){
