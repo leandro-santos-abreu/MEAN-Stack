@@ -40,7 +40,16 @@ export class MessageService {
     }
 
     getMessageById(id: string){
-        return{...this.messageSService.find(m =>m.messageId ===id)};
+        return{...this.messageSService.find(m =>m.messageId === id)};
+    }
+
+    updateMessage(messageId: string, content: string, username: string){
+        const message: Message = {content: content, username:username};
+        this.http.put("http://localhost:3000/editar/mensagens/"+messageId,message)
+        .subscribe(response => console.log(response));
+
+
+        // VERIFICAR O PQ ESTÁ ALEGANDO QUE ESTAMOS EDITANDO O ID, SEM PASSAR ELE NA MENSAGEM
     }
 
     deleteMessage(message: Message){

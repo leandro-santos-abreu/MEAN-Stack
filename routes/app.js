@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var User = require('../models/user');
-var Message = require('../models/message')
+var Message = require('../models/message');
 router.get('/enviarMensagem', function(req, res, next){
     res.render('sendMessage')
 });
@@ -41,6 +41,18 @@ router.get("/enviarVerUsuario", function(req, res, next){
 router.get('/', function (req, res, next) {
      res.render('index');
  });
+
+router.put("/editar/mensagens/:id",(req, res, next) =>{
+    const message = new Message({
+        content: req.body.content,
+        username: req.body.username
+    });
+
+    Message.updateOne({_id:req.params.id}, message).then(result =>{
+        console.log(result);
+        res.status(200).json({message: "Foi!"})
+    });
+});
 
 router.delete('/deletar/mensagens/:id', function(req, res, next){
     Message.deleteOne({ _id : req.params.id}).then(result=>{
