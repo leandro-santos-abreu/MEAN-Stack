@@ -24,7 +24,8 @@ router.post('/', function(req,res,next){
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         password: req.body.password,
-        email: req.body.email
+        email: req.body.email,
+        sexo: req.body.sexo
     })
     user.save(function(err, result){
         if(err){

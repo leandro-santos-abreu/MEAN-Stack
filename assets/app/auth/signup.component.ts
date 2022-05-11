@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Http } from "@angular/http";
 import { User } from "./user.model";
 import { UserService } from "./user.service";
 
@@ -18,7 +17,8 @@ export class SignupComponent implements OnInit{
             firstNameTS: new FormControl(null, Validators.required),
             lastNameTS: new FormControl(null, Validators.required),
             emailTS: new FormControl(null, [Validators.required, Validators.pattern("[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+")]),
-            passwordTS: new FormControl(null, Validators.required)
+            passwordTS: new FormControl(null, Validators.required),
+            sexoTS: new FormControl(null, Validators.required)
         })
     }
 
@@ -29,6 +29,7 @@ export class SignupComponent implements OnInit{
             password: this.myForm.get('passwordTS').value,
             firstName: this.myForm.get('firstNameTS').value,
             lastName: this.myForm.get('lastNameTS').value,
+            sexo: this.myForm.get("sexoTS").value
         }
 
         this.userSService.addUser(user).subscribe(
