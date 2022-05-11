@@ -22,7 +22,6 @@ export class MessageService {
     }
 
     getMessages(){
-        //return this.messageSService;
         return this.http.get('http://localhost:3000/message')
         .map((responseRecebida: Response) => {
             const responseEmJson = responseRecebida.json();

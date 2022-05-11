@@ -42,14 +42,7 @@ router.get('/', function (req, res, next) {
      res.render('index');
  });
 
-router.delete('/deletar/mensagens/:id', function(req, res, next){
-    Message.deleteOne({ _id : req.params.id}).then(result=>{
-        console.log(result);
-        res.status(200).json({
-            message: "Mensagem deletada."
-        });
-    });
-});
+
 
 
 
