@@ -9,6 +9,10 @@
             <label for="password">Senha:</label>
             <input type="text" class="form-control" id="password" formControlName="passwordTS">
         </div>
-        <button class="btn btn-primary" type="submit" [disabled]="!myForm.valid">Logar</button>
+        <div>
+            <button class="btn btn-primary" type="submit" [disabled]="!myForm.valid">Logar</button>
+            <button class="btn btn-danger" type="button" (click)="onLogout()" [disabled]="myForm.valid">Desconectar</button>
+
+        </div>
     </form>
 </div>

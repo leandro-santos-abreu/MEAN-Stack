@@ -36,7 +36,12 @@ export class SigninComponent implements OnInit{
         dadosErro => {
             alert(dadosErro.myErroTitle)
             this.myForm.reset();
-        });
-        
+        }); 
     } 
+
+    onLogout(){
+        this.myForm.reset()
+        alert("Usuário Deslogado")
+        this.myForm.enable();
+    }
 }

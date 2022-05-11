@@ -11,7 +11,6 @@ import { HeaderComponent } from './header.component';
 import { myrouting } from './app.routing';
 import { SigninComponent } from './auth/signin.component';
 import { SignupComponent } from './auth/signup.component';
-import { LogoutComponent } from './auth/logout.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HttpModule } from '@angular/http';
 
@@ -25,7 +24,6 @@ import { HttpModule } from '@angular/http';
         HeaderComponent,
         SigninComponent,
         SignupComponent,
-        LogoutComponent,
         MessagesComponent
     ],
     imports: [BrowserModule, FormsModule, myrouting, ReactiveFormsModule, HttpModule],

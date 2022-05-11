@@ -31,8 +31,16 @@ export class SignupComponent implements OnInit{
             lastName: this.myForm.get('lastNameTS').value,
         }
 
-        this.userSService.addUser(user).subscribe(dadosSucesso => console.log(dadosSucesso),
-                                                  dadosErro => console.log(dadosErro));
+        this.userSService.addUser(user).subscribe(
+        dadosSucesso => {
+            alert("Usuário Cadastrado com Sucesso!")
+            console.log(dadosSucesso)
+        },
+        dadosErro => {
+            alert("Erro no Processo de Cadastro")
+            console.log(dadosErro)
+
+        });
         this.myForm.reset();
     }
 }
