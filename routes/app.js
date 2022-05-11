@@ -43,7 +43,7 @@ router.get('/', function (req, res, next) {
  });
 
 router.put("/editar/mensagens/:id",(req, res, next) =>{
-    const message = new Message({
+    const message = ({
         content: req.body.content,
         username: req.body.username
     });
