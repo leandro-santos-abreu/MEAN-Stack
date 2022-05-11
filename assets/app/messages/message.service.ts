@@ -38,8 +38,12 @@ export class MessageService {
         .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
     }
 
+    getMessageById(id: string){
+        return{...this.messageSService.find(m =>m.messageId ===id)};
+    }
+
     deleteMessage(message: Message){
-        this.http.delete("http://localhost:3000/deletar/mensagens/"+message.userId)
+        this.http.delete("http://localhost:3000/deletar/mensagens/"+message.messageId)
         .subscribe(() => {
             console.log("Mensagem Deletada.")
         });
