@@ -1,22 +1,47 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Subject } from "rxjs";
+import { User } from "./user.model";
+import { UserService } from "./user.service";
 
 @Component({
     selector: 'app-signin',
-    templateUrl: './signin-component.html'
+    templateUrl: './signin-component.html',
+    providers: [UserService]
 })
-export class SigninComponent{
+export class SigninComponent implements OnInit{
     myForm: FormGroup;
-
-    onSubmit(){
-        console.log(this.myForm);
-        this.myForm.reset();
-    }
+    constructor (private userSService: UserService){ }
 
     ngOnInit(){
         this.myForm = new FormGroup({
             emailTS: new FormControl(null, [Validators.required, Validators.pattern("[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+")]),
             passwordTS: new FormControl(null, Validators.required)
         })
+    }
+
+    onSubmit(){
+        console.log(this.myForm);
+        const user: User = {
+            email: this.myForm.get('emailTS').value,
+            password: this.myForm.get('passwordTS').value,
+        }
+
+        this.userSService.getUser(user).subscribe(
+        dadosSucesso => {
+            alert("Usuário Logado com Sucesso!")
+            console.log(dadosSucesso)
+            this.myForm.disable();
+        },
+        dadosErro => {
+            alert(dadosErro.myErroTitle)
+            this.myForm.reset();
+        }); 
+    } 
+
+    onLogout(){
+        this.myForm.reset()
+        alert("Usuário Deslogado")
+        this.myForm.enable();
     }
 }

@@ -8,7 +8,6 @@ import { Component } from "@angular/core";
                         <ul class="nav nav-tabs">
                             <li routerLinkAtivo="active"><a [routerLink]="['signup']">SignUp</a></li>
                             <li routerLinkAtivo="active"><a [routerLink]="['signin']">SignIn</a></li>
-                            <li routerLinkAtivo="active"><a [routerLink]="['logout']">LogOut</a></li>
                         </ul>
                     </nav>
                 </header>

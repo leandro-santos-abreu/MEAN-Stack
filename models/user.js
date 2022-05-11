@@ -8,8 +8,7 @@ var schema = new Schema({
     lastName:  {type: String, required: true},
     password: {type: String, required: true},
     email: {type: String, required: true, unique: true},
-    messages: [{type: Schema.Types.ObjectId, ref: 'Message'}]
-    
+    sexo: {type: String, required:true}
 });
 
 
