@@ -19,6 +19,40 @@ router.get('/:email/:password', function(req,res,next){
     });
 });
 
+router.get('/logado', function(req,res,next){
+    User.findOne({'logado': true})
+    .exec(function(err,result){
+        if(!result || err){
+            return res.status(404).json({
+                myErroTitle: "Login ou Senha Invalidos!",
+                myError: err
+            });
+        }
+        return res.status(200).json({
+            myMsgSucess: "Usuário Encontrado!",
+            objSUserSRecuperadoS: result
+        }); 
+    });
+});
+
+router.get('/:id', function(req,res,next){
+    User.findOne({'_id': req.params.id})
+    .exec(function(err,result){
+        if(!result || err){
+            return res.status(404).json({
+                myErroTitle: "Usuário Indefinido",
+                myError: err
+            });
+        }
+        return res.status(200).json({
+            myMsgSucess: "Usuário Encontrado!",
+            objSUserSRecuperadoS: result
+        }); 
+    });
+});
+
+
+
 router.post('/', function(req,res,next){
     var user = new User({
         firstName: req.body.firstName,

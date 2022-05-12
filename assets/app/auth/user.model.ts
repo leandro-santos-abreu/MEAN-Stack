@@ -5,6 +5,7 @@ export class User {
         public userId?: string,
         public firstName?: string,
         public lastName?: string,
-        public sexo?: string
+        public sexo?: string,
+        public logado?: boolean
         ) {}
 }

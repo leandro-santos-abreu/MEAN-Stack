@@ -29,7 +29,8 @@ export class SignupComponent implements OnInit{
             password: this.myForm.get('passwordTS').value,
             firstName: this.myForm.get('firstNameTS').value,
             lastName: this.myForm.get('lastNameTS').value,
-            sexo: this.myForm.get("sexoTS").value
+            sexo: this.myForm.get("sexoTS").value,
+            logado: false
         }
 
         this.userSService.addUser(user).subscribe(

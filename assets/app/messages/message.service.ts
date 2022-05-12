@@ -3,17 +3,17 @@ import { Http, Response, Headers } from "@angular/http";
 import {Message} from "./message.model";
 import 'rxjs/Rx';
 import { Observable } from "rxjs";
+import { UserService } from "../auth/user.service";
 
 @Injectable()
 export class MessageService {
     private messageSService: Message[] = [];
+    private userService = new UserService(this.http)
 
     constructor(private http: Http) { }
-
     addMessage(message: Message){
         this.messageSService.push(message);
         console.log(this.messageSService);
-
         const bodyReq = JSON.stringify(message);
         const myHeaders = new Headers({'Content-Type': 'application/json'});
         return this.http.post('http://localhost:3000/message', bodyReq, {headers: myHeaders})
@@ -26,11 +26,19 @@ export class MessageService {
         .map((responseRecebida: Response) => {
             const responseEmJson = responseRecebida.json();
             const messageSResponseRecebida = responseEmJson.objSMessageSRecuperadoS;
+            console.log(messageSResponseRecebida);
             let transformedCastMessagesModelFrontend: Message[] = [];
                 for(let msg of messageSResponseRecebida){
-                    transformedCastMessagesModelFrontend.push(
-                        new Message(msg.content, 'Vinicius', msg._id, null)
-                    );
+                    console.log(msg)
+                    this.userService.getUserById(msg.user).subscribe(u => {
+                        transformedCastMessagesModelFrontend.push(
+                            new Message(msg.content, u.firstName, msg._id, u.userId)
+                        );
+
+                        //PARAMOS DE MEXER AQUI
+                        
+                    })
+                    console.log(transformedCastMessagesModelFrontend)
                 }
             this.messageSService = transformedCastMessagesModelFrontend;
             return transformedCastMessagesModelFrontend;

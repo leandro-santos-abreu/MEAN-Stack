@@ -26,7 +26,29 @@ export class UserService {
         .map((responseRecebida: Response) => {
             const responseEmJson = responseRecebida.json();
             const UserSResponseRecebida = responseEmJson.objSUserSRecuperadoS;
-            const user = new User(UserSResponseRecebida.email, UserSResponseRecebida.password, UserSResponseRecebida._id, UserSResponseRecebida.firstName, UserSResponseRecebida.lastName)
+            const user = new User(UserSResponseRecebida.email, UserSResponseRecebida.password, UserSResponseRecebida._id, UserSResponseRecebida.firstName, UserSResponseRecebida.lastName, UserSResponseRecebida.sexo, true)
+            return user;
+        })
+        .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
+    }
+
+    getUserByLogado(){
+        return this.http.get(`http://localhost:3000/user/logado`)
+        .map((responseRecebida: Response) => {
+            const responseEmJson = responseRecebida.json();
+            const UserSResponseRecebida = responseEmJson.objSUserSRecuperadoS;
+            const user = new User(UserSResponseRecebida.email, UserSResponseRecebida.password, UserSResponseRecebida._id, UserSResponseRecebida.firstName, UserSResponseRecebida.lastName, UserSResponseRecebida.sexo, true)
+            return user;
+        })
+        .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
+    }
+
+    getUserById(id: string){
+        return this.http.get(`http://localhost:3000/user/${id}`)
+        .map((responseRecebida: Response) => {
+            const responseEmJson = responseRecebida.json();
+            const UserSResponseRecebida = responseEmJson.objSUserSRecuperadoS;
+            const user = new User(UserSResponseRecebida.email, UserSResponseRecebida.password, UserSResponseRecebida._id, UserSResponseRecebida.firstName, UserSResponseRecebida.lastName, UserSResponseRecebida.sexo, true)
             return user;
         })
         .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
