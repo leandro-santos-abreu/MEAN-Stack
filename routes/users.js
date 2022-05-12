@@ -4,8 +4,8 @@ var router = express.Router();
 var User = require('../models/user');
 
 router.get('/:email/:password', function(req,res,next){
-    User.findOne({'email': req.params.email, 'password': req.params.password})
-    .exec(function(err,result){
+    User.updateOne({'email': req.params.email, 'password': req.params.password}, {'logado': true},
+    function( err, result){
         if(!result || err){
             return res.status(404).json({
                 myErroTitle: "Login ou Senha Invalidos!",
@@ -17,6 +17,24 @@ router.get('/:email/:password', function(req,res,next){
             objSUserSRecuperadoS: result
         }); 
     });
+
+});
+
+router.get('/deslogar', function(req,res,next){
+    User.updateOne({'logado': true}, {'logado': false},
+    function( err, result){
+        if(!result || err){
+            return res.status(404).json({
+                myErroTitle: "Erro",
+                myError: err
+            });
+        }
+        return res.status(200).json({
+            myMsgSucess: "Usuário Deslogado!",
+            objSUserSRecuperadoS: result
+        }); 
+    });
+
 });
 
 router.get('/logado', function(req,res,next){
@@ -59,7 +77,8 @@ router.post('/', function(req,res,next){
         lastName: req.body.lastName,
         password: req.body.password,
         email: req.body.email,
-        sexo: req.body.sexo
+        sexo: req.body.sexo,
+        logado: req.body.logado
     })
     user.save(function(err, result){
         if(err){

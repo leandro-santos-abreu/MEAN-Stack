@@ -32,10 +32,8 @@ export class MessageService {
                     console.log(msg)
                     this.userService.getUserById(msg.user).subscribe(u => {
                         transformedCastMessagesModelFrontend.push(
-                            new Message(msg.content, u.firstName, msg._id, u.userId)
+                            new Message(msg.content, u.firstName, msg._id, null)
                         );
-
-                        //PARAMOS DE MEXER AQUI
                         
                     })
                     console.log(transformedCastMessagesModelFrontend)

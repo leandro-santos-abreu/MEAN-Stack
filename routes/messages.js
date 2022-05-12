@@ -22,7 +22,8 @@ router.get('/', function(req,res,next){
 router.post('/', function (req,res,next){
     var message = new Message({
         content: req.body.content,
-        user: req.body.userId
+        user: req.body.userId,
+        username: req.body.username
 
     });
     message.save(function(err, result){

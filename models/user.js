@@ -8,7 +8,8 @@ var schema = new Schema({
     lastName:  {type: String, required: true},
     password: {type: String, required: true},
     email: {type: String, required: true, unique: true},
-    sexo: {type: String, required:true}
+    sexo: {type: String, required:true},
+    logado: {type: Boolean, default: false}
 });
 
 

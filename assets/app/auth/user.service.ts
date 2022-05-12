@@ -21,23 +21,35 @@ export class UserService {
         .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
     }
 
-    getUser(user: User){
+    patchUser(user: User){
         return this.http.get(`http://localhost:3000/user/${user.email}/${user.password}`)
         .map((responseRecebida: Response) => {
             const responseEmJson = responseRecebida.json();
             const UserSResponseRecebida = responseEmJson.objSUserSRecuperadoS;
-            const user = new User(UserSResponseRecebida.email, UserSResponseRecebida.password, UserSResponseRecebida._id, UserSResponseRecebida.firstName, UserSResponseRecebida.lastName, UserSResponseRecebida.sexo, true)
+            const user = new User(UserSResponseRecebida.email, UserSResponseRecebida.password, UserSResponseRecebida._id, UserSResponseRecebida.firstName, UserSResponseRecebida.lastName, UserSResponseRecebida.sexo, UserSResponseRecebida.logado)
             return user;
         })
         .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
     }
+
+    logoutUser(){
+        return this.http.get(`http://localhost:3000/user/deslogar`)
+        .map((responseRecebida: Response) => {
+            const responseEmJson = responseRecebida.json();
+            const UserSResponseRecebida = responseEmJson.objSUserSRecuperadoS;
+            const user = new User(UserSResponseRecebida.email, UserSResponseRecebida.password, UserSResponseRecebida._id, UserSResponseRecebida.firstName, UserSResponseRecebida.lastName, UserSResponseRecebida.sexo, UserSResponseRecebida.logado)
+            return user;
+        })
+        .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
+    }
+
 
     getUserByLogado(){
         return this.http.get(`http://localhost:3000/user/logado`)
         .map((responseRecebida: Response) => {
             const responseEmJson = responseRecebida.json();
             const UserSResponseRecebida = responseEmJson.objSUserSRecuperadoS;
-            const user = new User(UserSResponseRecebida.email, UserSResponseRecebida.password, UserSResponseRecebida._id, UserSResponseRecebida.firstName, UserSResponseRecebida.lastName, UserSResponseRecebida.sexo, true)
+            const user = new User(UserSResponseRecebida.email, UserSResponseRecebida.password, UserSResponseRecebida._id, UserSResponseRecebida.firstName, UserSResponseRecebida.lastName, UserSResponseRecebida.sexo, UserSResponseRecebida.logado)
             return user;
         })
         .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
@@ -48,7 +60,7 @@ export class UserService {
         .map((responseRecebida: Response) => {
             const responseEmJson = responseRecebida.json();
             const UserSResponseRecebida = responseEmJson.objSUserSRecuperadoS;
-            const user = new User(UserSResponseRecebida.email, UserSResponseRecebida.password, UserSResponseRecebida._id, UserSResponseRecebida.firstName, UserSResponseRecebida.lastName, UserSResponseRecebida.sexo, true)
+            const user = new User(UserSResponseRecebida.email, UserSResponseRecebida.password, UserSResponseRecebida._id, UserSResponseRecebida.firstName, UserSResponseRecebida.lastName, UserSResponseRecebida.sexo, UserSResponseRecebida.logado)
             return user;
         })
         .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));

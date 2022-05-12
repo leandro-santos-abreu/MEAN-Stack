@@ -27,7 +27,7 @@ export class SigninComponent implements OnInit{
             password: this.myForm.get('passwordTS').value,
         }
 
-        this.userSService.getUser(user).subscribe(
+        this.userSService.patchUser(user).subscribe(
         dadosSucesso => {
             alert("Usuário Logado com Sucesso!")
             console.log(dadosSucesso)
@@ -41,7 +41,17 @@ export class SigninComponent implements OnInit{
 
     onLogout(){
         this.myForm.reset()
-        alert("Usuário Deslogado")
         this.myForm.enable();
+
+        this.userSService.logoutUser().subscribe(
+        dadosSucesso => {
+            alert("Usuário Deslogado!")
+            console.log(dadosSucesso)
+        },
+        dadosErro => {
+            alert(dadosErro.myErroTitle)
+            this.myForm.reset();
+        }); 
+        
     }
 }
